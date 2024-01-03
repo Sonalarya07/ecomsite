@@ -67,9 +67,7 @@
                     <img src="{{ product.image }}" class="card-img-top" alt="">
                     <div class="card-body">
                         <div id="nm{{ product.id }}" class="card-title">{{ product.title }}</div>
-                        <div class="card-text">
-                            ₹{{ product.price }}
-                        </div>
+                        <div id="price{{product.id}}" class="card-text">{{ product.price }}</div>
 
                         <a href="/{{ product.id }}" class="btn btn-warning">View</a>
                         <a class="btn atc btn-warning" data-id="{{ product.id }}">Add to cart</a>
@@ -124,9 +122,15 @@
         if (cart[item_id] != undefined) {
             quantity = cart[item_id][0] + 1;
             cart[item_id][0] = quantity;
-        } else {
+            cart[item_id][2] = cart[item_id][2] + parseFloat(document.getElementById("price"+item_id).innerHTML);
+
+
+        }
+        else {
             quantity = 1;
-            cart[item_id] = [quantity, name];
+            price = parseFloat(document.getElementById("price"+item_id).innerHTML);
+            name = document.getElementById("nm" + item_id).innerHTML
+            cart[item_id] = [quantity, name,price];
         }
 
         console.log(cart);
