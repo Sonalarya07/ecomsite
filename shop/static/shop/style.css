@@ -1,0 +1,12 @@
+
+
+/* Styles for the card text */
+.card-text {
+    color: green;
+    font-weight: 100;
+}
+
+/* Styles for the card title */
+.card-title {
+    font-weight: 100;
+}
